@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="sample">
+     <select id="sample.selectBoardList" parameterType="hashmap" resultType="hashmap">
+     	<![CDATA[
+     		SELECT 
+     			num,
+     			title,
+     			hit_count,
+     			date 
+     		FROM board
+     		WHERE del='N'
+     		order by 1 desc
+     		limit 0,5
+     		]]>
+     </select>
+     
+     <insert id="insertBoard" parameterType="hashmap" useGeneratedKeys="true" keyProperty="IDX">
+     	<![CDATA[
+     		INSERT INTO board 
+     		(
+     			num,
+     			title, 
+     			content, 
+     			hit_count, 
+     			date, 
+     			writer,
+     			del 
+     		)
+     		values(
+     				#{IDX},
+     				#{TITLE},
+     				#{CONTENTS},
+     				0,
+     				now(),
+     				'a',
+     				'N'
+     			)     	
+     	]]>
+     </insert>
+     <!-- 이 경우는 jsp 에서 넘겨져 오는 값들 -->
+     
+     
+     
+     	<insert id="insertFile" parameterType="hashmap">
+		<![CDATA[
+			INSERT INTO tb_file (
+				board_num,
+				original_name,
+				stored_name,
+				file_size,
+				writer,
+				del
+			)
+			values
+			(
+				#{board_num},
+				#{original_name},
+				#{stored_name},
+				#{file_size},
+				'a',
+				'N'
+			)	
+		]]>
+	</insert>
+     <!-- 파라미터가 넘어오는 곳의 변수명이 되어야 한다. 
+     		insertFile의 값들이 넘어오는 곳은 FileUitls의 클래스 안 함수 
+     		listMap = new HashMap<String, Object>();
+     		안에 넣는 key 값을 가져와야 함. 
+     		 -->
+   <select id="selectFileList" parameterType="hashmap" resultType="hashmap">
+   		<![CDATA[
+   			SELECT 
+   				num,
+   				original_name,
+   				round(file_size/1024,1) as file_size
+   			FROM 
+   				tb_file
+   			WHERE 
+   				board_num = #{IDX} 
+   				AND
+   				del='N'
+   		
+   		]]>   
+   </select>
+     
+     
+     
+     
+     <update id="updateHitCnt" parameterType="hashmap">
+	        <![CDATA[
+		        UPDATE board
+		        SET
+		            hit_count = hit_count + 1
+		        WHERE
+		            num = #{IDX}   
+    ]]>
+    </update>
+    
+     <select id="selectBoardDetail" parameterType="hashmap" resultType="hashmap">
+	    <![CDATA[
+		        SELECT
+		            num,
+		            hit_count,
+		            writer,
+		            date,
+		            title,
+		            content
+		        FROM
+		            board
+		        WHERE
+		            num = #{IDX}     AND
+		            del='N'  
+	    ]]>
+	</select>
+	<update id="updateBoard" parameterType="hashmap">
+	    <![CDATA[
+	        UPDATE board
+	        SET
+	            title = #{TITLE},
+	            content = #{CONTENTS}
+	        WHERE
+	            num = #{IDX}   
+	    ]]>
+	</update>
+	
+	<update id="deleteBoard" parameterType="hashmap">
+	    <![CDATA[
+	       	UPDATE board
+	        SET
+	        	del='Y'
+	       	WHERE num = #{IDX}
+	       
+	    ]]>
+	</update>
+	
+	<update id="deleteFileList" parameterType="hashmap">
+		<![CDATA[
+			UPDATE tb_file
+			SET 
+				del='Y'
+			WHERE
+				board_num = #{IDX}
+		]]>
+	</update>
+	
+	<update id="updateFile" parameterType="hashmap">
+		<![CDATA[
+			UPDATE tb_file
+			SET 
+				del='N'
+			WHERE
+				num = #{FILE_IDX}
+		]]>
+	</update>
+
+
+
+</mapper>
+
