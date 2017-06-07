@@ -10,12 +10,16 @@ import first.common.dao.AbstractDAO;
 @Repository("sampleDAO")
 public class SampleDAO extends AbstractDAO{
 
-	@SuppressWarnings("unchecked")
+/*	@SuppressWarnings("unchecked")
 	public List<Map<String, Object>> selectBoardList(Map<String, Object> board) throws Exception{
 		// TODO Auto-generated method stub
 		return (List<Map<String, Object>>)selectList("sample.selectBoardList",board);
-	}
+	}*/
 	
+	@SuppressWarnings("unchecked")
+	public List<Map<String, Object>> selectBoardList(Map<String, Object> map) throws Exception{
+		return (List<Map<String, Object>>)selectPagingList("sample.selectBoardList", map);
+	}
 
 	public void insertBoard(Map<String, Object> map) throws Exception{
 		insert("sample.insertBoard", map);

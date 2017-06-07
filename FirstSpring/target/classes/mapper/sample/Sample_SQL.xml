@@ -3,6 +3,7 @@
  
 <mapper namespace="sample">
      <select id="sample.selectBoardList" parameterType="hashmap" resultType="hashmap">
+     	<include refid="common.pagingPre"/>
      	<![CDATA[
      		SELECT 
      			num,
@@ -11,9 +12,10 @@
      			date 
      		FROM board
      		WHERE del='N'
-     		order by 1 desc
-     		limit 0,5
+     		order by 1 desc 
+     		limit 0,15
      		]]>
+     		<include refid="common.pagingPost"/>
      </select>
      
      <insert id="insertBoard" parameterType="hashmap" useGeneratedKeys="true" keyProperty="IDX">

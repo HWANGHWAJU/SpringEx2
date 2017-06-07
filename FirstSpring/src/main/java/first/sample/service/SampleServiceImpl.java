@@ -28,7 +28,10 @@ public class SampleServiceImpl implements SampleService{
 	
 	public List<Map<String, Object>> selectBoardList(Map<String, Object> board) throws Exception {
 		// TODO Auto-generated method stub
-		return sampleDAO.selectBoardList(board);
+		System.out.println("simpleService");
+		List<Map<String, Object>> list = sampleDAO.selectBoardList(board);
+		System.out.println("list total"+list.size());
+		return list;
 	}
 
 	public void insertBoard(Map<String, Object> map, HttpServletRequest request) throws Exception{
@@ -38,7 +41,6 @@ public class SampleServiceImpl implements SampleService{
 		    for(int i=0, size=list.size(); i<size; i++){
 		    	sampleDAO.insertFile(list.get(i));
 		    }
-
 	}
 
 	public Map<String, Object> selectBoardDetail(Map<String, Object> map) throws Exception{

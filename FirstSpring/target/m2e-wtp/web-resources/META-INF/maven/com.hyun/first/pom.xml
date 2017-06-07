@@ -20,8 +20,13 @@
 
 	
 	
-<!-- 여기서 부터 0531 -->
+
 	<repositories>
+
+
+
+	
+	<!-- 여기서 부터 0531 -->
         <repository>
             <id>mvn2</id>
             <url>http://repo1.maven.org/maven2/</url>
@@ -40,6 +45,23 @@
 <!--여기 수정 -->
 	
 	<dependencies>
+<dependency>
+    <groupId>com.fasterxml.jackson.core</groupId>
+    <artifactId>jackson-core</artifactId>
+    <version>2.6.4</version>
+</dependency>
+ 
+<dependency>
+    <groupId>com.fasterxml.jackson.core</groupId>
+    <artifactId>jackson-databind</artifactId>
+    <version>2.6.4</version>
+</dependency>
+
+
+
+
+	
+	
 		<!-- 0605 Aspectj-->
 	<!-- cglib -->
 	<dependency>
@@ -377,6 +399,20 @@
 			<version>4.7</version>
 			<scope>test</scope>
 		</dependency>        
+		
+	<dependency>
+	    <groupId>com.fasterxml.jackson.core</groupId>
+	    <artifactId>jackson-core</artifactId>
+	    <version>2.6.4</version>
+	</dependency>
+	 
+	<dependency>
+	    <groupId>com.fasterxml.jackson.core</groupId>
+	    <artifactId>jackson-databind</artifactId>
+	    <version>2.6.4</version>
+	</dependency>
+	
+			
 		
 	</dependencies>
 	

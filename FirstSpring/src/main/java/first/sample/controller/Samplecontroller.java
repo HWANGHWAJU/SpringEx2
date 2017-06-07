@@ -26,9 +26,10 @@ public class Samplecontroller {
     private SampleService sampleService;
     
     
+    
    //요청 URL을 위미. 우리가 value 값을 호출하게 되면 RequestMapping 어노테이션과 
     //매핑되어, 해당 메서드가 실행된다. + 페이징 처리를 위한 수정
-    @RequestMapping(value="/sample/openBoardList.do")
+/*    @RequestMapping(value="/sample/openBoardList.do")
     public ModelAndView openSampleBoardList(Map<String, Object> commandMap) throws Exception{
         ModelAndView mv = new ModelAndView("/sample/boardList");
         //위는 화면에 보여줄 jsp 파일을 의미. 
@@ -41,8 +42,30 @@ public class Samplecontroller {
         //mv에 서비스로직의 결과를 ModelAndView 객체에 담아서 jsp 에서 그 값을 
         //이용할 수 있도록 저장. 
         return mv;
-    }
+    }*/
 
+    @RequestMapping(value="/sample/openBoardList.do")
+    public ModelAndView openBoardList(CommandMap commandMap) throws Exception{
+    	ModelAndView mv = new ModelAndView("/sample/boardList");
+    	
+    	return mv;
+    }
+    
+    @RequestMapping(value="/sample/selectBoardList.do")
+    public ModelAndView selectBoardList(CommandMap commandMap) throws Exception{
+    	ModelAndView mv = new ModelAndView("jsonView");
+    	
+    	List<Map<String, Object>> list = sampleService.selectBoardList(commandMap.getMap());
+    	mv.addObject("list", list);
+    	
+    	if(list.size() > 0){
+    		mv.addObject("TOTAL",  list.get(0).get("TOTAL_COUNT"));
+    	}else{
+    		mv.addObject("TOTAL",0);
+    	}
+    	return mv;
+    }
+    
     /*
      * 	ArgumentResolver test
      * 
