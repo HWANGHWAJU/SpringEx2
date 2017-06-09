@@ -88,9 +88,7 @@
                 
             }
             else{
-            	var str="<tr>"+"<td colspan='4'>"+total+"</td>"+"</tr>";
-            	body.append(str);
-   	
+
                 var params = {
                     divId : "PAGE_NAVI",
                     pageIndex : "PAGE_INDEX",
@@ -118,7 +116,9 @@
                     e.preventDefault();
                     fn_openBoardDetail($(this));
                 });
+                
             }
+            
         }
 
    

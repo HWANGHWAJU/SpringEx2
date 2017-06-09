@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import first.common.common.CommandMap;
+import first.sample.service.MusicService;
 import first.sample.service.SampleService;
 
 //웹 클라이언트에서 들어온 요청을 해당 비지니스 로직을 호출하고, 수행 결과와 함께 응답하는
@@ -25,6 +26,8 @@ public class Samplecontroller {
     @Resource(name="sampleService")
     private SampleService sampleService;
     
+    @Resource(name="musicService")
+    private MusicService musicService;
     
     
    //요청 URL을 위미. 우리가 value 값을 호출하게 되면 RequestMapping 어노테이션과 
@@ -43,11 +46,25 @@ public class Samplecontroller {
         //이용할 수 있도록 저장. 
         return mv;
     }*/
-
+    
+/*    @RequestMapping(value="/sample/openMainIndex.do")
+    public ModelAndView openMainIndex(Map<String, Object> commandMap) throws Exception{
+    	ModelAndView mv = new ModelAndView("/sample/mainIndex");
+    	
+    	//여기에 리턴만 들어오면 돼
+    	System.out.println("============================>samplecontroller");
+    	List<Map<String, Object>> music = musicService.selectMusicBoardList(commandMap);
+    	System.out.println("============================>samplecontroller 끝");
+    	mv.addObject("music", music);
+    	
+    	return mv;
+    }
+*/
     @RequestMapping(value="/sample/openBoardList.do")
     public ModelAndView openBoardList(CommandMap commandMap) throws Exception{
     	ModelAndView mv = new ModelAndView("/sample/boardList");
     	
+
     	return mv;
     }
     

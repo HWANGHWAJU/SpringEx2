@@ -21,21 +21,25 @@ public class SampleServiceImpl implements SampleService{
 
 	@Resource(name="fileUtils")
 	private FileUtils fileUtils;
-	
-	
+
 	@Resource(name="sampleDAO")
 	private SampleDAO sampleDAO;
 	
-	public List<Map<String, Object>> selectBoardList(Map<String, Object> board) throws Exception {
-		// TODO Auto-generated method stub
-		System.out.println("simpleService");
-		List<Map<String, Object>> list = sampleDAO.selectBoardList(board);
-		System.out.println("list total"+list.size());
+/*	public List<Map<String, Object>> selectBoardList(Map<String, Object> board) throws Exception {
+			// TODO Auto-generated method stub
+			System.out.println("SampleService Logger ==========================> sampleService");
+			List<Map<String, Object>> list = sampleDAO.selectBoardList(board);
+			System.out.println("list total : "+list.size());
 		return list;
 	}
-
+*/
+	
+	public List<Map<String, Object>> selectBoardList(Map<String, Object> map ) throws Exception{
+		return sampleDAO.selectBoardList(map);
+	}
+	
 	public void insertBoard(Map<String, Object> map, HttpServletRequest request) throws Exception{
-		sampleDAO.insertBoard(map);
+			sampleDAO.insertBoard(map);
 		    
 		    List<Map<String, Object>> list = fileUtils.parseInsertFileInfo(map, request);
 		    for(int i=0, size=list.size(); i<size; i++){
@@ -44,15 +48,13 @@ public class SampleServiceImpl implements SampleService{
 	}
 
 	public Map<String, Object> selectBoardDetail(Map<String, Object> map) throws Exception{
-		sampleDAO.updateHitCnt(map);
-		Map<String, Object> tempMap =sampleDAO.selectBoardDetail(map);
-		Map<String, Object> resultMap = new HashMap<String, Object>();
-		resultMap.put("map", tempMap);
-
-		List<Map<String, Object>> list = sampleDAO.selectFileList(map);
-		resultMap.put("list", list);
-		
-		
+			sampleDAO.updateHitCnt(map);
+			Map<String, Object> tempMap =sampleDAO.selectBoardDetail(map);
+			Map<String, Object> resultMap = new HashMap<String, Object>();
+			resultMap.put("map", tempMap);
+	
+			List<Map<String, Object>> list = sampleDAO.selectFileList(map);
+			resultMap.put("list", list);
 		return resultMap;
 	}
 	

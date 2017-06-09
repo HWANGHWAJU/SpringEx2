@@ -15,11 +15,16 @@ public class AbstractDAO {
      
     //context-mapper에서 SqlSessionTemplate이 sqlSession 을 대체한다고 선언. /
     //어노테이션 Autowired을 통해 xml에 선언했던 의존 관계를 자동으로 주입함. 
+    // Autowired 어노테이션 : setter/getter를 선언할 필요 없이 모든 성질 사용 가능 
+    
     @Autowired
     private SqlSessionTemplate sqlSession;
-     
+    // 등록 받은 라이브러리 중 SqlSessionTemplate 클래스 안에 모든 함수들 사용가능 (마이바티스를 이용한 디비 연동)
+    
+    
     //페이징 처리하는 로직
    //JsonView
+    
     
     @SuppressWarnings("unchecked")
     public Object selectPagingList(String queryId, Object params){
@@ -37,7 +42,7 @@ public class AbstractDAO {
         if(StringUtils.isEmpty(strPageRow) == false){
             nPageRow = Integer.parseInt(strPageRow);
         }
-        map.put("START", (nPageIndex * nPageRow) + 1);
+        map.put("START", (nPageIndex * nPageRow));
         map.put("END", 15);
          
         return sqlSession.selectList(queryId, map);
@@ -75,6 +80,7 @@ public class AbstractDAO {
         return sqlSession.selectOne(queryId, params);
     }
      
+    //페이징 처리 없
     @SuppressWarnings("rawtypes")
     public List selectList(String queryId){
         printQueryId(queryId);

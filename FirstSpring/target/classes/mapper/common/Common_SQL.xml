@@ -14,5 +14,24 @@
  				num = #{IDX}
  		]]>
  	</select>
+ <!-- 페이징 처리를 위한 -->
+ 	<sql id="pagingPre">
+ 		<![CDATA[
+		SELECT @i as TOTAL_COUNT, AAA.*
+		FROM(
+			SELECT
+				@i := @i + 1 as RNUM, AA.*
+			FROM(
+ 		]]>
+ 	</sql>
+ 	
+ 	<sql id="pagingPost">
+ 		<![CDATA[
+			)AA, (select @i := 0, @j := 0) temp
+		)AAA
+		WHERE AAA.RNUM limit #{START}, #{END}
+ 		]]>
+ 	</sql>
+ 
  
 </mapper>
