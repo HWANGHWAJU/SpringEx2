@@ -47,19 +47,7 @@ public class Samplecontroller {
         return mv;
     }*/
     
-/*    @RequestMapping(value="/sample/openMainIndex.do")
-    public ModelAndView openMainIndex(Map<String, Object> commandMap) throws Exception{
-    	ModelAndView mv = new ModelAndView("/sample/mainIndex");
-    	
-    	//여기에 리턴만 들어오면 돼
-    	System.out.println("============================>samplecontroller");
-    	List<Map<String, Object>> music = musicService.selectMusicBoardList(commandMap);
-    	System.out.println("============================>samplecontroller 끝");
-    	mv.addObject("music", music);
-    	
-    	return mv;
-    }
-*/
+
     @RequestMapping(value="/sample/openBoardList.do")
     public ModelAndView openBoardList(CommandMap commandMap) throws Exception{
     	ModelAndView mv = new ModelAndView("/sample/boardList");
