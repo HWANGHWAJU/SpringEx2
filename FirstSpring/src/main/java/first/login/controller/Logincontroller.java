@@ -37,11 +37,11 @@ public class Logincontroller {
 	/*********************	 1.	세션으로 로그인 처리  **********************************/
     
 	@RequestMapping(value="/login/doLogin.do")
-	public ModelAndView doLogin(User user, HttpSession sess, HttpServletRequest req, Map<String, Object> commandMap) throws Exception{
+	public ModelAndView doLogin(User user, HttpSession session, HttpServletRequest request, Map<String, Object> commandMap) throws Exception{
 			ModelAndView mv = new ModelAndView("/sample/mainIndex");
 			
-		String id = req.getParameter("id");
-		String pw = req.getParameter("pw");
+		String id = request.getParameter("id");
+		String pw = request.getParameter("pw");
 			
 		Map<String, Object> loginuser = loginService.loginUser(id, pw);
 		
@@ -55,7 +55,7 @@ public class Logincontroller {
 		
 		
 		if(user != null){
-			sess.setAttribute("loginUser", user);
+			request.getSession().setAttribute("loginUser", user);
 			mv.addObject("user", user);
 		}
 		return mv;
@@ -80,12 +80,12 @@ public class Logincontroller {
 	 * 모아 놓아 변수에 종속된 함수로 사용할 수 있게 선언되어 있음.*/
 	
 	@RequestMapping(value="/login/openMyPage.do")
-	public ModelAndView openMyPage(CommandMap userInfo) throws Exception{
-		ModelAndView mv = new ModelAndView("/sample/MyPage");
+	public ModelAndView openMyPage(CommandMap userInfo, HttpServletRequest req) throws Exception{
+		ModelAndView mv = new ModelAndView("/sample/MyPage_main.jsp?item=MyPage_myInfo");
 		
 		Map<String, Object> info =  loginService.userInfo(userInfo.getMap());
 			
-	
+		req.getSession().setAttribute("info", info);
 		mv.addObject("info", info);
 		
 		return mv;

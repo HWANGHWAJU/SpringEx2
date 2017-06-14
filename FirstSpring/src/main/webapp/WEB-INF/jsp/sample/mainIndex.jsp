@@ -613,7 +613,6 @@ function fn_logOut(obj){
 function fn_openMyPage(obj){
 	var comSubmit = new ComSubmit();
 	var userId ="${sessionScope.loginUser.id}";
-	alert(userId);
 	comSubmit.setUrl("<c:url value='/login/openMyPage.do'/>");
 	comSubmit.addParam("userId",userId);
 	comSubmit.submit();

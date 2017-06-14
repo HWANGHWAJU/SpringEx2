@@ -10,11 +10,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import first.common.common.CommandMap;
+import first.dto.music.MusicDTO;
+import first.dto.scraps.ScrapDTO;
 import first.login.model.User;
 import first.sample.service.MusicService;
 import first.sample.service.SampleService;
@@ -26,6 +29,8 @@ public class Myguitarcontroller {
 	
 	@Resource(name="musicService")
 	private MusicService musicService;
+	
+
 
 	/*********************	 1.	게시판 목록 불러오기 **********************************/
 	
@@ -78,15 +83,31 @@ public class Myguitarcontroller {
     /*********************	 5.	개인정보 화면 불러오기 **********************************/
     
     @RequestMapping(value="/sample/MyPage_myInfo.do")
-    public ModelAndView MyPage_myInfo(CommandMap map) throws Exception{
-    	ModelAndView mv = new ModelAndView("/sample/MyPage.jsp?item=MyPage_myInfo");
-    	return mv;
-    }
-    /*********************	 6. 작성한 글 목록 화면 불러오기 **********************************/
-    @RequestMapping(value="/sample/MyPage_Iwritten.do")
-    public ModelAndView MyPage_Iwritten(CommandMap map) throws Exception{
-    	ModelAndView mv = new ModelAndView("/sample/MyPage.jsp?item=MyPage_Iwritten");
+    public ModelAndView MyPage_myInfo(CommandMap map, HttpSession sess, User user) throws Exception{
+    	ModelAndView mv = new ModelAndView("/sample/MyPage_main.jsp?item=MyPage_myInfo");
     	
     	return mv;
     }
+    
+    /*********************	 6. 작성한 글 목록 화면 불러오기 **********************************/
+    @RequestMapping(value="/sample/MyPage_Iwritten.do")
+    public ModelAndView MyPage_Iwritten(CommandMap map) throws Exception{
+    	ModelAndView mv = new ModelAndView("/sample/MyPage_main.jsp?item=MyPage_Iwritten");
+    	String board="Music";
+    	List<MusicDTO> list = musicService.selectMusicIwritten(map);
+    	mv.addObject("list", list);
+    	mv.addObject("board", board);
+      	return mv;
+    }
+    
+    /*********************	 7. 스크랩한 글 목록 화면 불러오기 **********************************/
+    
+    @RequestMapping(value="/sample/MyPage_scraps.do")
+    public ModelAndView MyPage_scraps(CommandMap map) throws Exception{
+    	ModelAndView mv = new ModelAndView("/sample/MyPage_main.jsp?item=MyPage_scraps");
+    	List<ScrapDTO> scraps = musicService.selectMusicScraps(map);
+    	mv.addObject("scraps", scraps);
+    	return mv;
+    }
+    
 }

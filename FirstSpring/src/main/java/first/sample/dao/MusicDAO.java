@@ -6,6 +6,8 @@ import org.springframework.stereotype.Repository;
 
 import first.common.common.CommandMap;
 import first.common.dao.AbstractDAO;
+import first.dto.music.MusicDTO;
+import first.dto.scraps.ScrapDTO;
 
 // 클래스 AbstractDAO를 참조하고 있다. AbstractDAO 에 선언되어 있는 함수 사용 가능. 
 // AstractDAO에 있는 함수를 사용하며, 표면적 DAO 함수를 만들기 위해 현재 클래스 생성.
@@ -34,4 +36,16 @@ public class MusicDAO extends AbstractDAO{
 	public Map<String, Object> selectMusicContent(Map<String, Object>map) throws Exception{
 		return(Map<String, Object>) selectOne("music.selectMusicContent", map);
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<MusicDTO> selectMusicIwritten(CommandMap map) throws Exception{
+		System.out.println(map.get("UserId"));
+		return (List<MusicDTO>)selectList("music.selectMusicIwritten", map.get("UserId"));
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<ScrapDTO> selectScraps(CommandMap map) throws Exception{
+		return (List<ScrapDTO>)selectList("music.selectScraps", map.get("UserId"));
+	}
 }
+

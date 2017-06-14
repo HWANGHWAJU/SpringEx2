@@ -34,10 +34,19 @@
      
      
     <mvc:interceptors>
+        <!-- 로그 인터셉터 -->
         <mvc:interceptor>
             <mvc:mapping path="/**"/>
             <bean id="loggerInterceptor" class="first.common.logger.LoggerInterceptor"></bean>
         </mvc:interceptor>
+        
+        <!-- 로그인관련 인터셉터 -->
+        <mvc:interceptor>
+        	<mvc:mapping path="/sample/MyPage_*"/>
+        	<bean id="loginoutInterceptor" class="first.common.loginout.LoginoutInterceptor"></bean>
+        	
+        </mvc:interceptor>
+        
     </mvc:interceptors>
     
     

@@ -4,6 +4,8 @@ import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 import first.common.common.CommandMap;
+import first.dto.music.MusicDTO;
+import first.dto.scraps.ScrapDTO;
 import first.sample.dao.MusicDAO;
 
 import java.util.*;
@@ -38,8 +40,17 @@ public class MusicServicelmpl implements MusicService{
 		
 		resultMap.put("music", tempMap);
 		resultMap.put("music_content", content);
-		
-		
 		return resultMap;
+	}
+	
+	public List<MusicDTO> selectMusicIwritten(CommandMap map) throws Exception{
+	
+		List<MusicDTO> musicList = musicDAO.selectMusicIwritten(map);
+		return musicList;
+	}
+	
+	public List<ScrapDTO> selectMusicScraps(CommandMap map) throws Exception{
+		List<ScrapDTO> musicScrap = musicDAO.selectScraps(map);
+		return musicScrap;
 	}
 }

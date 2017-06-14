@@ -4,9 +4,9 @@
 <html>
 <head>
 <%@ include file="/WEB-INF/include/include-header.jsp" %>
+<%@ include file="/WEB-INF/include/include-floatmenu.jsp" %>
 </head>
 <body>
-
 
 <div class="top">
 	<div class="container text-center">
@@ -16,48 +16,48 @@
 			
 	</div>
 
+    <nav >
+
+	<div>
+            <nav  class="floatmenu">
+            <ul class="topmenu">
+             <li><a href="openMainIndex.do" class="menuLink">Home</a></li>
+             <li><a href="#" class="menuLink">Service</a>
+            		<ul class="submenu"> 
+            			<li><a href="searchData.jsp"  id="sub">Search Data</a></li>
+            			<li><a href="#" id="sub">Search PracticeRoom</a></li>
+            			<li><a href="#" id="sub">Search Concert</a></li>
+            		</ul>
+            </li>
+            
+            <li><a href="#" class="menuLink">Board</a>
+            	<ul class="submenu">
+            		<li><a href="index.jsp?#music" id="sub">Music Board</a></li>
+            		<li><a href="index.jsp?#video" id="sub">Video Board</a></li>
+            	</ul>
+            
+            </li>
+
+            <li><a href="index.jsp?#contact" class="menuLink">Contact Us</a></li>
+            </ul>
+            </nav>
+
+        </div>
+    </nav>
 </div>
 
 
 <div class="space"></div>
 
-    <!-- Off Canvas Navigation
-    ================================================== -->
-    <div class="navmenu navmenu-default navmenu-fixed-left offcanvas"> <!--- Off Canvas Side Menu -->
-        <div class="close" data-toggle="offcanvas" data-target=".navmenu">
-            <span class="fa fa-close"></span>
-        </div>
-        <div class="add-margin"></div>
-        <ul class="nav navmenu-nav"> <!--- Menu -->
-            <li><a href="index.jsp" class="page-scroll">Home</a></li>
-            <li><a href="index.jsp?#meet-us" class="page-scroll">Meet us</a></li>
-            <li><a href="index.jsp?#services" class="page-scroll">Service</a></li>
-             <li><a href="index.jsp?#board" class="page=scroll">My Page</a></li>
-            <li><a href="index.jsp?#music" class="page=scroll">Music Board</a></li>
-            <li><a href="index.jsp?#video" class="page=scroll">Video Board</a></li>
-            <li><a href="index.jsp?#about-us" class="page-scroll">About Us</a></li>
-            <li><a href="index.jsp?#contact" class="page-scroll">Contact Us</a></li>
-        </ul><!--- End Menu -->
-    </div> <!--- End Off Canvas Side Menu -->
-
-
-<div class="container text-center">
-            <!-- Navigation 왼쪽 상단 메뉴 펼침 선택도구  -->
-            <nav id="menu" data-toggle="offcanvas" data-target=".navmenu">
-                <span class="fa fa-bars"></span>
-            </nav>
- </div>
-
-
-<div>
+<div style="height: 800px;">
 	<div class="container">
 	
 		<div class="row text-center">
 			<div class="col-md-8 col-md-offset-2">
 			<div class="section-title">
-			<h1></h1>
+			<h1>${music.music_title }</h1>
 			<hr>
-			 어떤 악보를 읽으러 왔오 :) ?
+			 
 				</div>
 			</div>
 		</div>
@@ -134,7 +134,7 @@
 	
 	</div><!--  -->
 	
-	
+	</div>
 	<nav id="footer">
 	        <div class="container">
 	             <div class="pull-left">

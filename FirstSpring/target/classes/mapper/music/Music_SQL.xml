@@ -44,4 +44,39 @@
  				music_num = #{MNUM}
  		]]>
  	</select>
+ 	
+ 	<select id="music.selectMusicIwritten" parameterType="String" resultType="first.dto.music.MusicDTO">
+ 		<![CDATA[
+ 			SELECT
+ 				music_num,
+ 				music_title,
+ 				music_uploader,
+ 				music_readcnt,
+ 				header,
+ 				date
+ 			FROM
+ 				 music
+ 			WHERE
+ 				music_uploader = #{userId}
+ 			order by 1 desc
+ 		]]>
+ 	</select>
+ 	
+ 	<select id="music.selectScraps" parameterType="String" resultType="first.dto.scraps.ScrapDTO">
+ 		<![CDATA[
+ 			SELECT
+ 				scrap_num,
+ 				scrap_user,
+ 				scrap_board,
+ 				scrap_article_num,
+ 				m.music_title as title,
+ 				m.date as date,
+ 				m.header as header
+ 			FROM m_scrap, music m
+ 			WHERE scrap_article_num = m.music_num 
+ 					AND
+ 							scrap_user = #{userId}
+ 			order by 1 desc
+ 		]]>
+ 	</select>
 </mapper>

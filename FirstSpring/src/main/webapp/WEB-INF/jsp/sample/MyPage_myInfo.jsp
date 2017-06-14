@@ -1,24 +1,19 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Insert title here</title>
-</head>
-<body>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <div class="container text-center">
 		<div class="row text-center" id="hiddenBody">
-				<table align="center"  id="memcon" style="display:block;">
+				<table align="center"  id="memcon" style="display:block;" >
 				<tr>
-				<td width="200" height="25" style="text-align: right;">È¸¿ø ¾ÆÀÌµğ</td>
-				<td width="300" height="25" >${info.Mem_id}</td>
-				<td rowspan="2"><input type="button" value="È®ÀÎ" id="check" class="btn">
+				<td width="200" height="25" style="text-align: right;">íšŒì› ì•„ì´ë””</td>
+				<td width="300" height="25" >${loginUser.id}</td>
+				<td rowspan="2"><input type="button" value="í™•ì¸" id="check" class="btn">
 				</td>
 				</tr>
 				
 				<tr>
-				<td width="200" height="25"  style="text-align: right;">ºñ¹Ğ ¹øÈ£ È®ÀÎ </td>
+				<td width="200" height="25"  style="text-align: right;">ë¹„ë°€ ë²ˆí˜¸ í™•ì¸ </td>
 				<td width="300" height="25" > <input type="password" id="pwcon" name="pwcon"></td>
 				</tr>
 				</table>
@@ -28,13 +23,13 @@
 		<div class="container text-center">
 			<div class="row text-center"id="myInfo" style="display:none;">
 			<table align="center">
-				<tr height="30"><td align="right">¾ÆÀÌµğ </td><td> ${info.Mem_id }</td></tr>
-				<tr height="30"><td align="right">ºñ¹Ğ¹øÈ£ </td><td> ${info.Mem_pw }</td></tr>
-				<tr height="30"><td align="right">ÀÌ¸§ </td><td> ${info.Mem_name}</td></tr>
-				<tr height="30"><td align="right">³ªÀÌ </td><td> ${info.Mem_age }</td></tr>
-				<tr height="30"><td align="right">ÀÌ¸ŞÀÏ </td><td> ${info.Mem_email }</td></tr>
+				<tr height="30"><td align="right">ì•„ì´ë”” </td><td> ${info.Mem_id }</td></tr>
+				<tr height="30"><td align="right">ë¹„ë°€ë²ˆí˜¸ </td><td> ${info.Mem_pw }</td></tr>
+				<tr height="30"><td align="right">ì´ë¦„ </td><td> ${info.Mem_name}</td></tr>
+				<tr height="30"><td align="right">ë‚˜ì´ </td><td> ${info.Mem_age }</td></tr>
+				<tr height="30"><td align="right">ì´ë©”ì¼ </td><td> ${info.Mem_email }</td></tr>
 			</table>
-			<a href="#this" id="changeInfo">°³ÀÎ Á¤º¸ º¯°æ</a>
+			<a href="#this" id="changeInfo">ê°œì¸ ì •ë³´ ë³€ê²½</a>
 			</div>
 				<div class="space"></div>
 		</div>
@@ -53,14 +48,15 @@
 	 var info = document.getElementById("myInfo");
 	 var con = document.getElementById("memcon");
 	 
+	 alert("input pw : "+inputPw+" PW :"+memPw);
+	 
 	 if(inputPw != memPw){
-		 alert("ÀÏÄ¡ÇÏÁö ¾ÊÀ½");
+		 alert("ì¼ì¹˜í•˜ì§€ ì•ŠìŒ");
 	 }else if(inputPw == memPw){
-		 alert("ÀÏÄ¡ÇÔ");
+		 alert("ì¼ì¹˜í•¨");
 		 
 		con.style.display='none';
 		info.style.display='block';
 	 }
  }
 </script>	 
-</html>

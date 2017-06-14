@@ -4,96 +4,10 @@
 <html>
 <head>
 <%@ include file="/WEB-INF/include/include-header.jsp" %>
+<%@ include file="/WEB-INF/include/include-floatmenu.jsp" %>
 </head>
-<style type="text/css">
-	
-	.all { background-color : D8D8D6;}
-	.floatmenu { margin:0; padding-top: 10px; padding-left: 100px;}
-	
-	.floatmenu ul ul 
-		{ 
-			display: none;       
-			position:absolute;
-		
-		
-		}
-		
-	.topmenu li {
-		display : inline;
-		padding :0 10px;
-		list-style : none;
-		float:left;
-		background-color: #2d2d2d;
-		line-height: 30px;
-		vertical-align :middle;
-		text-align: center;
 
-	}
-	
-	.nextmenu li {
-	
-		display : inline;
-		padding :0 10px;
-		list-style : none;
-		float:left;
-		background-color: #2d2d2d;
-		line-height: 30px;
-		vertical-align :middle;
-		text-align: center;
-	
-	}
-	
-	
-	.submenu li:hover  { border-bottom: 1px solid white;}
-	
-	.submenu li{
-		float:none;
-		display:list-item;
-		text-align: left;
-		
-		}
-	
-	.menuLink {
-		text-decoration: none;
-		color : white;
-		font-weigth : bold;
-		font-family: "Trebuchet MS", Dotum, Arial;  }
-		
-		.floatmenu ul li:hover ul { display:block;}
-		.submenu ul li.hover ul {display:block;}
-		
-		#sub {
-			color : white;
-			font-size : 12px;
-			font-family: "Trebuchet MS", Dotum, Arial;  }
-			
-		
-	
-		.tbl-menu {
-				border: 1px solid;
-		
-		}
-		
-		.tbl-menu td{
-			padding: 15px;
-		}
-
-
-.top{
-		
-	background: #282f35;
-	padding: 0 40px;
-	color: #ffffff;
-	border-top: 5px solid #c59a6d;
-	height: 70px;
-		
-		}
-
-</style>
-
-<body>
-<c:set var="user"  value=""/>
-		
+<body>		
 <div class="top">
 	<div class="container text-center">
 		<div class="pull-center">
@@ -107,8 +21,8 @@
 	<div>
             <nav  class="floatmenu">
             <ul class="topmenu">
-             <li><a href="index.jsp?#home" class="menuLink">Home</a></li>
-             <li><a href="index.jsp?#services" class="menuLink">Service</a>
+             <li><a href="openMainIndex.do" class="menuLink">Home</a></li>
+             <li><a href="#" class="menuLink">Service</a>
             		<ul class="submenu"> 
             			<li><a href="searchData.jsp"  id="sub">Search Data</a></li>
             			<li><a href="#" id="sub">Search PracticeRoom</a></li>
@@ -151,39 +65,7 @@
 				
 			</div>
 	</div>
-<%-- 	
-	<div class="container text-center">
-		<div class="row text-center" id="hiddenBody">
-				<table align="center"  id="memcon" style="display:block;">
-				<tr>
-				<td width="200" height="25" style="text-align: right;">회원 아이디</td>
-				<td width="300" height="25" >${info.Mem_id}</td>
-				<td rowspan="2"><input type="button" value="확인" id="check" class="btn">
-				</td>
-				</tr>
-				
-				<tr>
-				<td width="200" height="25"  style="text-align: right;">비밀 번호 확인 </td>
-				<td width="300" height="25" > <input type="password" id="pwcon" name="pwcon"></td>
-				</tr>
-				</table>
-		</div>
-	</div>
-		
-		<div class="container text-center">
-			<div class="row text-center"id="myInfo" style="display:none;">
-			<table align="center">
-				<tr height="30"><td align="right">아이디 </td><td> ${info.Mem_id }</td></tr>
-				<tr height="30"><td align="right">비밀번호 </td><td> ${info.Mem_pw }</td></tr>
-				<tr height="30"><td align="right">이름 </td><td> ${info.Mem_name}</td></tr>
-				<tr height="30"><td align="right">나이 </td><td> ${info.Mem_age }</td></tr>
-				<tr height="30"><td align="right">이메일 </td><td> ${info.Mem_email }</td></tr>
-			</table>
-			<a href="#this" id="changeInfo">개인 정보 변경</a>
-			</div>
-				<div class="space"></div>
-		</div>
- --%>
+
 		<c:set var="item" value="${param.item }"/>
 		<div class="container text-center">
 			<div class="row text-center" >
@@ -215,33 +97,42 @@
 	 });
 	 
 	 $("a[name='myinfo']").on("click", function(e){
-		 alert("ㅇㅇ");
 		 e.preventDefault();
 		 fn_viewMyinfo($(this));
 	 });
 	 
 	 $("a[name='myarticles']").on("click", function(e){
-		 alert("ㅇㅇ");
 		 e.preventDefault();
 		 fn_viewArticles($(this));
+	 });
+	 
+	 $("a[name='scraps']").on("click", function(e){
+		 e.preventDefault();
+		 fn_viewScraps($(this));
 	 });
  });
  
  function fn_viewArticles(obj){
 	 var comSubmit = new ComSubmit();
-	 alert("ㅇㅇ");
+	 var userId = '${loginUser.id}';
 	 comSubmit.setUrl("<c:url value='/sample/MyPage_Iwritten.do'/>");
+	 comSubmit.addParam("UserId", userId);
 	 comSubmit.submit();
  }
  
  function fn_viewMyinfo(obj){
 	 var comSubmit = new ComSubmit();
-	 alert("ㅇㅇ");
 	 comSubmit.setUrl("<c:url value='/sample/MyPage_myInfo.do'/>");
 	 comSubmit.submit();
  }
  
- 
+ function fn_viewScraps(obj){
+	 var userId = '${loginUser.id}';
+	 var comSubmit = new ComSubmit();
+	 comSubmit.setUrl("<c:url value='/sample/MyPage_scraps.do'/>");
+	 comSubmit.addParam("UserId", userId);
+	 comSubmit.submit();
+ }
  function pw_memCheck(){
 	 var inputPw = document.getElementById("pwcon").value;
 	 var memPw = "${info.Mem_pw}";
@@ -251,9 +142,9 @@
 	 
 	 if(inputPw != memPw){
 		 alert("일치하지 않음");
+		 document.getElementById("pwcon").focus();
+		 document.getElementById("pwcon").select();
 	 }else if(inputPw == memPw){
-		 alert("일치함");
-		 
 		con.style.display='none';
 		info.style.display='block';
 	 }
