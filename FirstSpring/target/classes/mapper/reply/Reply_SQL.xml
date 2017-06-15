@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="reply">
+	<select id="reply.selectReplyList" parameterType="hashmap" resultType="first.reply.model.ReplyDTO">
+		<![CDATA[
+			SELECT
+				board_name,
+				reply_num,
+				item_num,
+				text,
+				date,
+				writer_id
+			FROM
+				reply
+			WHERE
+				board_name = #{BOARD} and
+				item_num = #{ANUM}
+		]]>
+	</select>
+	
+	<insert id="reply.insertReply" parameterType="hashmap">
+		<![CDATA[
+			INSERT INTO reply (
+					board_name,
+					item_num,
+					text,
+					date,
+					writer_id	)
+			VALUES (
+					#{board},
+					#{anum},
+					#{replytext},
+					now(),
+					#{writer}
+			)
+		]]>
+	</insert>
+</mapper>

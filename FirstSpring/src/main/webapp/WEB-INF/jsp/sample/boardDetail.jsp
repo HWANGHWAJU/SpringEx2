@@ -38,7 +38,7 @@
                 <td colspan="3">
                     <c:forEach var="row" items="${list }">
                         <input type="hidden" id="IDX" value="${row.num }">
-                        <a href="#this" name="file">${row.original_name }</a>
+ 
                         (${row.file_size }kb)</br>
                     </c:forEach>
                 </td>
