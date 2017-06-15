@@ -76,17 +76,7 @@
 
 </div>
 </div>
-    <nav id="footer">
-        <div class="container">
-             <div class="pull-left">
-                <p>2014 © Arcadia. All Rights Reserved. Coded by <a href="https://dribbble.com/jennpereira">Jenn</a> & Designed by <a href="https://dribbble.com/alanpodemski">Alan</a></p>
-          		<p>좋은 템블릿이야.</p>
-            </div>
-            <div class="pull-right"> 
-                <a href="#home" class="page-scroll">Back to Top <span class="fa fa-angle-up"></span></a>
-            </div>
-        </div>
-    </nav>
+<%@ include file="/WEB-INF/include/include-footer.jsp" %>
  <%@ include file="/WEB-INF/include/include-body.jsp" %>
  
  <script type="text/javascript">

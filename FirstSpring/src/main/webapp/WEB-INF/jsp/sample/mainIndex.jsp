@@ -235,8 +235,6 @@
             <br>
             <a href="#music" class="down-btn page-scroll"><span class="fa fa-angle-down"></span></a>
         </div>
-    
-    
     </div>
 
 
@@ -549,7 +547,11 @@
                 <p>2014 © Arcadia. All Rights Reserved. Coded by <a href="https://dribbble.com/jennpereira">Jenn</a> & Designed by <a href="https://dribbble.com/alanpodemski">Alan</a></p>
             </div>
             <div class="pull-right"> 
-            	<a href="javascript:Logout();">LOGOUT</a>&nbsp;&nbsp;
+             <c:choose>
+            	<c:when test="${not empty sessionScope.loginUser}">
+            	<a href="#this" name="logout">LOGOUT</a>&nbsp;&nbsp;
+            	</c:when>
+            </c:choose>
                 <a href="#home" class="page-scroll">Back to Top <span class="fa fa-angle-up"></span></a>
             </div>
         </div>

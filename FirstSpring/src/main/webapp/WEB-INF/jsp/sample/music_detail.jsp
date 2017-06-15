@@ -5,51 +5,19 @@
 <head>
 <%@ include file="/WEB-INF/include/include-header.jsp" %>
 <%@ include file="/WEB-INF/include/include-floatmenu.jsp" %>
+<style>
+table td{
+	padding: 8px;
+}
+</style>
 </head>
 <body>
 
-<div class="top">
-	<div class="container text-center">
-		<div class="pull-center">
-			<p>	</p>
-			</div>
-			
-	</div>
-
-    <nav >
-
-	<div>
-            <nav  class="floatmenu">
-            <ul class="topmenu">
-             <li><a href="openMainIndex.do" class="menuLink">Home</a></li>
-             <li><a href="#" class="menuLink">Service</a>
-            		<ul class="submenu"> 
-            			<li><a href="searchData.jsp"  id="sub">Search Data</a></li>
-            			<li><a href="#" id="sub">Search PracticeRoom</a></li>
-            			<li><a href="#" id="sub">Search Concert</a></li>
-            		</ul>
-            </li>
-            
-            <li><a href="#" class="menuLink">Board</a>
-            	<ul class="submenu">
-            		<li><a href="index.jsp?#music" id="sub">Music Board</a></li>
-            		<li><a href="index.jsp?#video" id="sub">Video Board</a></li>
-            	</ul>
-            
-            </li>
-
-            <li><a href="index.jsp?#contact" class="menuLink">Contact Us</a></li>
-            </ul>
-            </nav>
-
-        </div>
-    </nav>
-</div>
-
+<jsp:include page="/WEB-INF/include/floatmenu.jsp"/>
 
 <div class="space"></div>
 
-<div style="height: 800px;">
+<div class="maindiv" >
 	<div class="container">
 	
 		<div class="row text-center">
@@ -72,8 +40,7 @@
 							<td>No</td>
 							<td colspan="2">${music.music_num }</td>
 							</tr>
-	
-						<tr>
+					<tr>
 						<!-- 작성자 -->
 							<td>Writer</td>
 							<td colspan="2">${music.music_uploader }</td>
@@ -83,8 +50,6 @@
 							<td>Header</td>
 							<td colspan="2">${music.header}</td>
 					</tr>
-
-				
 				<tr>
 					<td>파일</td>
 						<td width="300">
@@ -96,7 +61,6 @@
 							</div>
 						</td>
 					</tr>
-				
 				<tr>
 						<!-- 내용 -->
 						<td>Content</td>
@@ -104,7 +68,7 @@
 						스크랩</td>
 						</tr>
 					<tr>
-						<td colspan="3" width="100%" id="content">
+						<td colspan="3" width="100%" height="300"id="content" style="border:1px solid #c59a6d;">
 						${music_content.content }
 						</td>
 					</tr>
@@ -118,33 +82,34 @@
 				<div class="container text-center" id="img" style="display:none; overflow: scroll;">
 		
 				</div>
-				
-				
-				<div style="padding-top: 20px;">
-					<a href="#" >[삭제]</a>
-					<a href="ModifyMusic.jsp">[수정]</a>
-
-					<a href="index.jsp?#music">[목록]</a>
-				</div>
-				
-			</div> <!-- table div -->
+				</div> <!-- table div -->
 		
 		<div class="space"></div>
 
+		<div>
+		
+		<jsp:include page="/reply/viewReply.do">
+			<jsp:param value="music" name="BOARD"/>
+			<jsp:param value="${music.music_num }" name="ANUM"/>
+		</jsp:include>
+		</div>
+		
+		<jsp:include page="/reply/ReplyForm.do">
+			<jsp:param value="music" name="BOARD"/>
+			<jsp:param value="${music.music_num }" name="ANUM"/>
+		</jsp:include>
 	
+			<div style="padding-top: 20px;">
+					<a href="#" >삭제</a>
+					<a href="ModifyMusic.jsp">수정</a>
+
+					<a href="index.jsp?#music">목록</a>
+				</div>
+<div class="space"></div>
 	</div><!--  -->
 	
 	</div>
-	<nav id="footer">
-	        <div class="container">
-	             <div class="pull-left">
-	                <p>2014 © Arcadia. All Rights Reserved. Coded by <a href="https://dribbble.com/jennpereira">Jenn</a> & Designed by <a href="https://dribbble.com/alanpodemski">Alan</a></p>
-	            </div>
-	            <div class="pull-right"> 
-	                <a href="#home" class="page-scroll">Back to Top <span class="fa fa-angle-up"></span></a>
-	            </div>
-	        </div>
-	    </nav>
+<%@ include file="/WEB-INF/include/include-footer.jsp" %>
 </body>
 
 </html>

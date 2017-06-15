@@ -14,6 +14,10 @@ body, html{
 		width: 960px;
 	}
 }
+.mindiv{
+	min-height: 800px;
+	overflow: visible;
+}
 h1{
 	font-weight: 700;
 	font-size: 46px;

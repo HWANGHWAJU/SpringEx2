@@ -54,7 +54,27 @@ public class Myguitarcontroller {
     @RequestMapping(value="/sample/openMusicBoardDetail.do")
     public ModelAndView openMusicDetail(CommandMap commandMap) throws Exception{
     	ModelAndView mv = new ModelAndView("/sample/music_detail");
+    	//여기서 두 개의 dao를 통해 받아온 결과값들을 받아서 mv 에 추가 해줘야해 
+    	Map<String, Object> music = musicService.selectMusicBoardDetail(commandMap.getMap());
     	
+    	mv.addObject("music", music.get("music"));
+    	mv.addObject("music_content",music.get("music_content"));
+    	
+    	return mv;
+    }
+    
+    @SuppressWarnings("null")
+	@RequestMapping(value="/sample/ReopenMusicBoardDetail.do")
+    public ModelAndView ReopenMusicDetail(CommandMap commandMap, HttpServletRequest request) throws Exception{
+    	ModelAndView mv = new ModelAndView("/sample/music_detail");
+    	String board = request.getParameter("board");
+    	String num = request.getParameter("mnum");
+    	System.out.println("board :"+board+"   num:"+num);
+    	
+    	Map<String, Object> MNUM = null;
+    	
+    	
+    	commandMap.put("MNUM", num);
     	//여기서 두 개의 dao를 통해 받아온 결과값들을 받아서 mv 에 추가 해줘야해 
     	Map<String, Object> music = musicService.selectMusicBoardDetail(commandMap.getMap());
     	
