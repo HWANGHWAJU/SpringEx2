@@ -4,6 +4,7 @@
 <html>
 <head>
 <%@ include file="/WEB-INF/include/include-header.jsp" %>
+
 </head>
 <body>
     <!-- Off Canvas Navigation
@@ -108,7 +109,7 @@
             <div class="space"></div>
 
             <div class="row">
-                <div class="col-md-4 col-sm-4"><a href="searchData.jsp">
+                <div class="col-md-4 col-sm-4"><a href="<c:url value='/sample/openSearchData.do'/>">
                     <div class="service">
                         <span class="fa fa-book fa-3x"></span>
                         <h4>Search Data</h4>
@@ -116,7 +117,7 @@
                     </div></a>
                 </div>
 
-                <div class="col-md-4 col-sm-4"><a href="searchMap.jsp">
+                <div class="col-md-4 col-sm-4"><a href="<c:url value='/sample/openSearchMap.do'/>">
                     <div class="service">
                         <span class="fa fa-bicycle fa-3x"></span>
                         <h4>Search PracticeRoom</h4>
@@ -124,7 +125,7 @@
                     </div></a>
                 </div>
 
-                <div class="col-md-4 col-sm-4"><a href="QandAList.jsp">
+                <div class="col-md-4 col-sm-4"><a href="#">
                     <div class="service">
                         <span class="fa fa-plug fa-3x"></span>
                         <h4>Q & A </h4>
@@ -172,7 +173,7 @@
                                     <p class="lead">Lee Hyun Ju</p>
                                     <div class="hline"></div> <!-- 언더바 ___ -->
                                 </div>
-                                <img src="image/1.jpg" class="img-responsive" alt="...">
+                                <img src="<c:url value='/image/1.jpg'/>" class="img-responsive" alt="..."/>
                             </a>
                         </div>
                     </div>
@@ -187,7 +188,7 @@
                                     <p class="lead">Web Page</p>
                                     <div class="hline"></div>
                                 </div>
-                                <img src="image/33.jpg" class="img-responsive" alt="...">
+                                <img src="<c:url value='/image/33.jpg'/>" class="img-responsive" alt="..."/>
                             </a>
                         </div>
                     </div>
@@ -203,7 +204,7 @@
                                     <div class="hline"></div>
                                 </div>
                             </a>
-                            <img src="image/88.jpg" class="img-responsive" alt="...">
+                            <img src="<c:url value='/image/88.jpg'/>" class="img-responsive" alt="..."/>
                         </div>
                     </div>
                 </div>
@@ -218,7 +219,7 @@
                                     <div class="hline"></div>
                                 </div>
                             </a>
-                            <img src="image/ff.jpg" class="img-responsive" alt="...">
+                            <img src="<c:url value='/image/ff.jpg'/>" class="img-responsive" alt="..."/>
                         </div>
                     </div>
                 </div>
@@ -254,103 +255,13 @@
 				<div class="space"></div>
 				
 			<div class="include">
-			
-    <center>
-	<div>
-		<table class="bbs" width="900" height="200" border="2" >
-		<colgroup>
-			<col width="60" />
-			<col width="100"/>
-			<col width="500" />
-			<col width="100" />
-			<col width="200"/>
-			<col width="60" />
-		</colgroup>
-	
-		<thead>
-			<tr>
-			<td align="center">번	호</td>
-			<td align="center">말 머 리</td>
-			<td align="center">제	목</td>
-			
-			<td align="center">작  성  자</td>
-			<td align="center">작 성  일</td>
-			<td align="center">조  회  수</td>
-			</tr>
-		</thead>
-
-		<tbody id="list">
-			<c:choose>
-				<c:when test="${fn:length(music) > 0}">
-					<c:forEach items="${music }" var="row">
-					<tr>
-						<td align="center">${row.music_num }</td>
-						<td align="center">${row.header }</td>
-						<td align="center">
-							<a href="#this" name="title">${row.music_title }</a>
-							<input type="hidden" id="MNUM" value="${row.music_num}"> 
-						</td>
-						<td align="center">${row.music_uploader }</td>
-						<td align="center">${row.date }</td>
-						<td align="center">${row.music_readcnt }</td>
-					</tr>
-				</c:forEach>
-			</c:when>
-				<c:otherwise>
-					<tr>
-						<td colspan="6">등록된 글이 없습니다.</td>
-					</tr>
-				</c:otherwise>
-			</c:choose>
-		</tbody>
-	</table>
-</div>
-	
-	<div id="PAGE_NAVI"></div>
-	<input type="hidden" id="PAGE_INDEX" name="PAGE_INDEX"/>
-	
-    <br/>
-    	<a href="#this" class="btn" id="write">글쓰기</a>
-	
-	
-		<div class="space"></div>
-</center>
-			</div>	
-
-<script type="text/javascript">
-	$(document).ready(function(){
-		
-		
-		$("#write").on("clink", function(e){
-			e.preventDefault();
-			fn_openMusicBoardWrite();
-		});
-		
-		$("a[name='title']").on("click", function(e){
-			e.preventDefault();
-			fn_openMusicBoardDetail($(this));
-		});
-	});
-	
-	function fn_openMusicBoardWrite(){
-		var comSubmit = new ComSubmit();
-		comSubmit.setUrl("<c:url value='sample/openMusicBoardWrite.do'/>");
-		comSubmit.submit();
-	}
-	
-	function fn_openMusicBoardDetail(obj){
-		var comSubmit = new ComSubmit();
-		comSubmit.setUrl("<c:url value='/sample/openMusicBoardDetail.do'/>");
-		comSubmit.addParam("MNUM", obj.parent().find("#MNUM").val());
-		comSubmit.submit();
-	}
-</script>
-
+			<jsp:include page="/sample/openMusicBoardList.do"/>
+   			 </div>
 		
 			<br>
             <a href="#video" class="down-btn page-scroll"><span class="fa fa-angle-down"></span></a>
       
-		</div>
+		
 	</div>
 
 	<!-- 비디오 게시판 #video-->
@@ -369,7 +280,7 @@
 			<div class="space"></div>
 			
 			<div class="include">
-			
+			<jsp:include page="/sample/openMusicBoardList.do"/>
 			</div>
 			
 			<br>
@@ -402,7 +313,7 @@
                         
                         <div class="col-md-4 col-sm-4">
                             <div class="team">
-                                <img src="img/team/02.jpg" class="img-responsive img-circle" alt="...">
+                                <img src="<c:url value='/img/team/02.jpg'/>" class="img-responsive img-circle" alt="..."/>
                                 <br>
                                 <h4>Lian Gwapa</h4>
                                 <p class="small">CEO/Founder</p>
@@ -412,7 +323,7 @@
 
                         <div class="col-md-4 col-sm-4">
                             <div class="team">
-                                <img src="img/team/04.jpg" class="img-responsive img-circle" alt="...">
+                                <img src="<c:url value='/img/team/04.jpg'/>" class="img-responsive img-circle" alt="..."/>
                                 <br>
                                 <h4>Jenn Pereira</h4>
                                 <p class="small">Web Coder</p>
@@ -422,7 +333,7 @@
 
                         <div class="col-md-4 col-sm-4">
                             <div class="team">
-                                <img src="img/team/03.jpg" class="img-responsive img-circle" alt="...">
+                                <img src="<c:url value='/img/team/03.jpg'/>" class="img-responsive img-circle" alt="..."/>
                                 <br>
                                 <h4>Alan Podemski</h4>
                                 <p class="small">Web Designer</p>

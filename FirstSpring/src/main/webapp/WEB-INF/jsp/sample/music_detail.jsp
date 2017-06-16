@@ -35,6 +35,7 @@ table td{
 		<div class="tbl">
 				
 				<table width="100%">
+				<tbody>
 					<tr>
 						<!-- 번호  -->
 							<td>No</td>
@@ -72,6 +73,7 @@ table td{
 						${music_content.content }
 						</td>
 					</tr>
+					</tbody>
 				</table>
 				
 				<div class="space"></div>
@@ -93,23 +95,33 @@ table td{
 			<jsp:param value="${music.music_num }" name="ANUM"/>
 		</jsp:include>
 		</div>
-		
-		<jsp:include page="/reply/ReplyForm.do">
+<jsp:include page="/reply/ReplyForm.do">
 			<jsp:param value="music" name="BOARD"/>
 			<jsp:param value="${music.music_num }" name="ANUM"/>
-		</jsp:include>
+		</jsp:include> 
 	
 			<div style="padding-top: 20px;">
-					<a href="#" >삭제</a>
-					<a href="ModifyMusic.jsp">수정</a>
-
-					<a href="index.jsp?#music">목록</a>
+					<a href="#this"  name="dele">삭제</a>
+					<a href="#this" name="modify">수정</a>
+					<a href="#this" name="list">목록</a>
 				</div>
 <div class="space"></div>
 	</div><!--  -->
 	
 	</div>
 <%@ include file="/WEB-INF/include/include-footer.jsp" %>
+<script type="text/javascript">
+$(document).ready(function(){
+	$("a[name='list']").on("click", function(e){
+		e.preventDefault();
+		fn_goList();
+	});
+});
+
+function fn_goList(){
+	location.href="<c:url value='/sample/openMainIndex.do?#music'/>";
+}
+</script>
 </body>
 
 </html>

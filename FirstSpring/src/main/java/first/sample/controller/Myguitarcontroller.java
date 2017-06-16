@@ -38,17 +38,35 @@ public class Myguitarcontroller {
 	
     @RequestMapping(value="/sample/openMainIndex.do")
     public ModelAndView openMainIndex(Map<String, Object> commandMap) throws Exception{
-    	ModelAndView mv = new ModelAndView("/sample/mainIndex");
-    	
-    	//여기에 리턴만 들어오면 돼
-    	System.out.println("============================>samplecontroller");
-    	List<Map<String, Object>> music = musicService.selectMusicBoardList(commandMap);
-    	System.out.println("============================>samplecontroller 끝");
-    	mv.addObject("music", music);
-    	
+    	ModelAndView mv = new ModelAndView("/sample/mainIndex");  	
     	return mv;
     }
 	
+
+    /***************************페이징 게시판 목록 불러오기 ********************************/
+    
+    @RequestMapping(value="/sample/openMusicBoardList.do")
+    public ModelAndView openMusicBoardList(CommandMap map) throws Exception{
+    	ModelAndView mv = new ModelAndView("/sample/music_main");
+    	return mv;
+    }
+    
+    @RequestMapping(value="/sample/selectMusicBoardList.do")
+    public ModelAndView selectMusicBoardList(CommandMap map) throws Exception{
+    	ModelAndView mv = new ModelAndView("jsonView");
+    	
+    	List<Map<String, Object>> list = musicService.selectMusicBoardList(map.getMap());
+    	mv.addObject("list", list);
+    	
+    	if(list.size() > 0 ){
+    		mv.addObject("TOTAL", list.get(0).get("TOTAL_COUNT"));
+    	}else{
+    		mv.addObject("TOTAL", 0);
+    	}
+    	return mv;
+    }
+    
+    
     /*********************	 2.	게시판 상세 불러오기 **********************************/
     
     @RequestMapping(value="/sample/openMusicBoardDetail.do")
@@ -63,6 +81,7 @@ public class Myguitarcontroller {
     	return mv;
     }
     
+    /*******************************************댓글 입력 후 *****************************************************/
     @SuppressWarnings("null")
 	@RequestMapping(value="/sample/ReopenMusicBoardDetail.do")
     public ModelAndView ReopenMusicDetail(CommandMap commandMap, HttpServletRequest request) throws Exception{
@@ -130,4 +149,17 @@ public class Myguitarcontroller {
     	return mv;
     }
     
+    /*********************	 8. 검색 화면 불러오기 **********************************/
+    
+    @RequestMapping(value="/sample/openSearchData.do")
+    public ModelAndView openSearchData(CommandMap map) throws Exception{
+    	ModelAndView mv = new ModelAndView("/sample/Search_Data");
+    	return mv;
+    }
+    /*********************	 9. 지도 화면 불러오기 **********************************/
+    @RequestMapping(value="/sample/openSearchPrac.do")
+    public ModelAndView openSearchPrac(CommandMap map) throws Exception{
+    	ModelAndView mv = new ModelAndView("/sample/Search_prac");
+    	return mv;
+    }
 }

@@ -3,6 +3,7 @@
 
 <mapper namespace="reply">
 	<select id="reply.selectReplyList" parameterType="hashmap" resultType="first.reply.model.ReplyDTO">
+		<include refid="common.pagingPre"/>
 		<![CDATA[
 			SELECT
 				board_name,
@@ -17,6 +18,7 @@
 				board_name = #{BOARD} and
 				item_num = #{ANUM}
 		]]>
+		<include refid="common.pagingPost"/>
 	</select>
 	
 	<insert id="reply.insertReply" parameterType="hashmap">

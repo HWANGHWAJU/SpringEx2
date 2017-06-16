@@ -70,7 +70,7 @@ div .boxes{
 							<td>${s.title }</td>
 							<td>${s.scrap_user }</td>
 							<td>${s.date }</td>
-							<td><input type="checkbox"</td>
+							<td><input type="checkbox"></td>
 						</tr>
 						<input type="hidden" id="snum" name="snum" value="${s.scrap_num }">
 					</c:forEach>

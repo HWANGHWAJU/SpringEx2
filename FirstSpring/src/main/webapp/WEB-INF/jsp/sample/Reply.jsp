@@ -43,8 +43,34 @@ table.replytbl tbody td{
 					 </c:choose>
 					</tbody>
 				</table> <!-- 댓글 목록 -->
-		
+	
 		<div class="space"></div>
+	
+	<div id="PAGE_NAVI"></div>
+	<input type="hidden" id="PAGE_INDEX" name="PAGE_INDEX"/>
+			
+		<div class="space"></div>
+	
+
 		</div> <!-- container div -->
 </div> <!-- reply div -->
 
+<script type="text/javascript">
+$(document).ready(function(){
+	fn_Paging(1);
+});
+function fn_Paging(pageNo){
+	var total = "${TOTAL}";
+	
+	if(total > 0){
+		var params ={
+				divId : "PAGE_NAVI",
+				pageIndex : "PAGE_INDEX",
+				totalCount : total,
+				eventName:"fn_Paging"
+		};
+		
+		gfn_renderPaging(params);
+	}
+}
+</script>

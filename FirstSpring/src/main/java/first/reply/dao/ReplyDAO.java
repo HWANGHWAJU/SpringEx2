@@ -14,7 +14,7 @@ public class ReplyDAO extends AbstractDAO{
 	//SQL에 parameterType 이 hashmap 이면 여기 이 함수들의 매개변수가 map으로 일치해야 한다;
 	@SuppressWarnings("unchecked")
 	public List<ReplyDTO> selectReplyList(Map<String, Object> map) throws Exception{
-		return (List<ReplyDTO>)selectList("reply.selectReplyList",map);
+		return (List<ReplyDTO>)selectPagingList("reply.selectReplyList",map);
 	}
 
 	public void insertReply(Map<String, Object> map) throws Exception{

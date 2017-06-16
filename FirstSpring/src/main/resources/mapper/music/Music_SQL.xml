@@ -3,6 +3,7 @@
 
 <mapper namespace="music">
 	 	<select id="music.selectMusicBoardList" parameterType="hashmap" resultType="hashmap">
+	 	<include refid="common.pagingPre"/>
  		<![CDATA[
  			SELECT
  				music_num,
@@ -15,6 +16,7 @@
  				music
  			order by 1 desc
  		]]>
+ 		<include refid="common.pagingPost"/>
  	</select>
  	
  	<select id="music.selectMusicBoardDetail" parameterType="hashmap" resultType="hashmap">

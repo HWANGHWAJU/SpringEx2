@@ -49,6 +49,25 @@ public class Replycontroller {
     	return mv;
 	}
 	
+/*	@RequestMapping(value="/reply/openReplyList.do")
+	public ModelAndView openReplyList(CommandMap map) throws Exception{
+		ModelAndView mv = new ModelAndView("jsonView");
+		
+		System.out.println(map.get("BOARD")+"글 번호 :"+map.get("ANUM"));
+	   	List<ReplyDTO> replylist = replyService.selectReplyList(map);
+    	
+    	mv.addObject("replylist",replylist);
+    	mv.addObject("BOARD", map.get("BOARD"));
+    	mv.addObject("ANUM", map.get("ANUM"));
+    	
+    	if(replylist.size() > 0){
+    		mv.addObject("TOTAL", replylist.size());
+    	}else{
+    		mv.addObject("TOTAL", 0);
+    	}
+    	return mv;
+	}*/
+	
 	/***************************2. 댓글 작성 폼*********************************************/
 	
 	@RequestMapping(value="/reply/ReplyForm.do")

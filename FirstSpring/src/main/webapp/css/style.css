@@ -14,7 +14,7 @@ body, html{
 		width: 960px;
 	}
 }
-.mindiv{
+.maindiv{
 	min-height: 800px;
 	overflow: visible;
 }
