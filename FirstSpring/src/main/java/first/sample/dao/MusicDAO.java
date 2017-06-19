@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import first.common.common.CommandMap;
 import first.common.dao.AbstractDAO;
+import first.dto.file.FileDTO;
 import first.dto.music.MusicDTO;
 import first.dto.scraps.ScrapDTO;
 
@@ -47,5 +48,35 @@ public class MusicDAO extends AbstractDAO{
 	public List<ScrapDTO> selectScraps(CommandMap map) throws Exception{
 		return (List<ScrapDTO>)selectList("music.selectScraps", map.get("UserId"));
 	}
+	
+	public void insertMusic(Map<String, Object> map) throws Exception{
+		insert("music.insertMusic", map);
+	}
+	
+	public void insertMusicContent(Map<String, Object> map) throws Exception{
+		insert("music.insertMusicContent", map);
+	}
+	public void insertFile(Map<String, Object> map) throws Exception{
+
+		insert("music.insertFile", map);
+	}
+	
+	public List<FileDTO> selectFileLIst(Map<String, Object> map) throws Exception{
+		@SuppressWarnings("unchecked")
+		List<FileDTO> files = (List<FileDTO>)selectList("music.selectFileList",map);
+		return files;
+	}
+	
+	public void deleteArticle(Map<String, Object> map) throws Exception{
+		update("music.deleteArticle", map);
+	}
+	public void deleteContent(Map<String, Object> map) throws Exception{
+		update("music.deleteContent", map);
+	}
+
+	public void deleteFile(Map<String, Object> map) throws Exception{
+		update("music.deleteFile", map);
+	}
+
 }
 

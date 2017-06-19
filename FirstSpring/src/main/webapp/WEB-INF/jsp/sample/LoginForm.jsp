@@ -4,27 +4,9 @@
 <html>
 <head>
 <%@ include file="/WEB-INF/include/include-header.jsp" %>
+<%@ include file="/WEB-INF/include/include-floatmenu.jsp" %>
 </head>
 <style type="text/css">
-.top{
-		
-	background: #282f35;
-	padding: 0 40px;
-	color: #ffffff;
-	border-top: 5px solid #c59a6d;
-	height: 70px;
-		
-		}
-
-.tbl{
-	border:1px solid #AE7D34;
-	padding:30px;
-}
-
-	table tr{
-		height: 15px;
-	}
-	
 	.btn{
 	
 	text-transform: uppercase;
@@ -42,24 +24,12 @@
 <body>
 
 
-<div class="top">
-	<div class="container text-center">
-		<div class="pull-center">
-			<p>	</p>
-			</div>
-			
-	</div>
-
-</div>
-
-
- <%--	<marquee behavior="alternate" scrolldelay="100" direction="right" id="slide"> ~왜 왔니~</marquee> --%>
-
-<%--<form action="Login.jsp" method="post" name="loginmain" onsubmit="return LoginCheck();">--%>
-
+<jsp:include page="/WEB-INF/include/floatmenu.jsp"/>
 <div class="space"></div>
 <div class="space"></div>
-
+<div class="space"></div>
+<div class="space"></div>
+<div class="maindiv">
 	<div class="container text-center">
 		<div class="row">
 				<div class="tbl">
@@ -94,11 +64,12 @@
 			</div>
 		</div>
 	</div>
+	</div>
 	
 <div class="space"></div>
 <div class="space"></div>
 <div class="space"></div>
-
+<%@ include file="/WEB-INF/include/include-footer.jsp" %>
 
 <script>
 $(document).ready(function(){

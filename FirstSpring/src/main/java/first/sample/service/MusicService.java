@@ -2,7 +2,10 @@ package first.sample.service;
 
 import java.util.*;
 
+import javax.servlet.http.HttpServletRequest;
+
 import first.common.common.CommandMap;
+import first.dto.file.FileDTO;
 import first.dto.music.MusicDTO;
 import first.dto.scraps.ScrapDTO;
 
@@ -21,5 +24,10 @@ public interface MusicService {
 	 //4. 내가 스크랩한 글 목록 불러오기(악보)
 	 List<ScrapDTO> selectMusicScraps(CommandMap map) throws Exception;
 	 
+	 //5. 게시글 등록
+	 void insertMusic(Map<String, Object> map, HttpServletRequest request) throws Exception;
+	 
+	 //삭제
+	 void deleteArticle(Map<String, Object> map) throws Exception;
 }
  

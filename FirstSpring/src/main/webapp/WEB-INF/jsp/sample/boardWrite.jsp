@@ -62,7 +62,7 @@
         
         $("a[name='delete']").on("click", function(e){
         	e.preventDefault();
-        	fn_deleteFile($this);
+        	fn_deleteFile($(this));
         });
     });       
     

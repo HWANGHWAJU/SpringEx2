@@ -30,6 +30,7 @@ public class FileUtils {
         String originalFileName = null;
         String originalFileExtension = null;
         String storedFileName = null;
+
         
         System.out.println("1");
         
@@ -40,6 +41,7 @@ public class FileUtils {
         String boardIdx = String.valueOf(map.get("IDX"));
         String requestName = null;
         String idx=null;
+        String uploader = String.valueOf(map.get("writer"));
         
         File file = null;
        
@@ -52,7 +54,8 @@ public class FileUtils {
                 originalFileName = multipartFile.getOriginalFilename();
                 originalFileExtension = originalFileName.substring(originalFileName.lastIndexOf("."));
                 storedFileName = CommonUtils.getRandomString() + originalFileExtension;
-     
+                
+                
                 System.out.println("3");   
                 file = new File(filePath + storedFileName);
                 multipartFile.transferTo(file);
@@ -63,6 +66,7 @@ public class FileUtils {
                 listMap.put("original_name", originalFileName);
                 listMap.put("stored_name", storedFileName);
                 listMap.put("file_size", multipartFile.getSize());
+                listMap.put("writer", uploader);
                 list.add(listMap);
            
                 isnew = "y";

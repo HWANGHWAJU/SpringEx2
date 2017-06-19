@@ -43,6 +43,22 @@ public class Myguitarcontroller {
     }
 	
 
+    /**************************** 게시글 작성 폼*******************************/
+    @RequestMapping(value="/sample/openInsertBoardForm.do")
+    public ModelAndView openMusicBoardWrite(Map<String, Object> commandMap) throws Exception{
+    	ModelAndView mv = new ModelAndView("/sample/music_write");
+    	return mv;
+    }
+    
+    /**********************************게시글 등록**************************************/
+    @RequestMapping(value="/sample/insertMusic.do")
+    public ModelAndView insertMusic(CommandMap map, HttpServletRequest request) throws Exception{
+    	ModelAndView mv = new ModelAndView("redirect:/sample/openMainIndex.do?#music");
+    	musicService.insertMusic(map.getMap(), request);
+    	return mv;
+    }
+    
+    
     /***************************페이징 게시판 목록 불러오기 ********************************/
     
     @RequestMapping(value="/sample/openMusicBoardList.do")
@@ -77,9 +93,19 @@ public class Myguitarcontroller {
     	
     	mv.addObject("music", music.get("music"));
     	mv.addObject("music_content",music.get("music_content"));
+    	mv.addObject("files", music.get("files"));
     	
     	return mv;
     }
+    
+    /*******************************************게시글 삭제하기 *****************************************************/
+    @RequestMapping(value="/sample/deleteArticle.do")
+    public ModelAndView deleteArticle(CommandMap map) throws Exception{
+    	ModelAndView mv = new ModelAndView("redirect:/sample/openMainIndex.do?#music");
+    	musicService.deleteArticle(map.getMap());
+    	return mv;
+    }
+    
     
     /*******************************************댓글 입력 후 *****************************************************/
     @SuppressWarnings("null")
