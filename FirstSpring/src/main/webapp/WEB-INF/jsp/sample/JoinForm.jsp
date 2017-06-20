@@ -4,18 +4,12 @@
 <html>
 <head>
 <%@ include file="/WEB-INF/include/include-header.jsp" %>
+<%@ include file="/WEB-INF/include/include-floatmenu.jsp" %>
+ 
 </head>
 <body>
-<div class="top">
-	<div class="container text-center">
-		<div class="pull-center">
-			<p>	</p>
-			</div>
-			
-	</div>
-
-</div>
-<div style="height: 800px;">
+<jsp:include page="/WEB-INF/include/floatmenu.jsp"/>
+<div class="maindiv">
 <div class="space"></div>
 <div class="text-center">
 <h1>Welcome : )</h1>
@@ -29,35 +23,35 @@
 											<form method="post" name="joinform" id="joinform">
 												<table class="tab"align="center" >
 													<tr>
-														<td colspan="2" align="right">*ID </td>
+														<td colspan="2" >*ID </td>
 														<td><input type="text" id="inputid" name="inputid"></td>
 														<td align="left"><input type="button"  class="check" value="중복 확인" onclick="CheckID();"></td>
 													</tr>
 													
 													<tr>
-														<td colspan="2" align="right">* Password </td>
+														<td colspan="2" >* Password </td>
 														<td><input type="password" id="inputpw" name="inputpw" ></td>
 														<td></td>
 													</tr>
 													<tr>
-														<td colspan="2" align="right">* Password confirm	</td>
+														<td colspan="2" >* Password confirm	</td>
 														<td><input type="password" id="pwcon" name="pwcon"></td>
 														<td></td>
 													</tr>
 													<tr>
-														<td colspan="2" align="right">* Name </td>
+														<td colspan="2" >* Name </td>
 														<td><input type="text" id="inputname" name="inputname">
 														</td>
 													</tr>
 													<tr>
-														<td colspan="2" align="right">* Age </td>
+														<td colspan="2" >* Age </td>
 														<td><input type="number" id="inputage" name="inputage">
 														</td>
 														<td></td>
 													</tr>
 												
 													<tr>
-														<td colspan="2" align="right">* E-Mail </td>
+														<td colspan="2" >* E-Mail </td>
 														<td><input type="email" id="inputemail" name="inputemail">
 														</td> 
 														<td></td>
@@ -74,7 +68,7 @@
 													</tr>
 													<tr><td></td></tr>	
 													<tr>
-													<td colspan="4"><a href="#">HOME</a></td>
+													<td colspan="4"><a href="openMainIndex.do">HOME</a></td>
 													</tr>
 												</table>
 												

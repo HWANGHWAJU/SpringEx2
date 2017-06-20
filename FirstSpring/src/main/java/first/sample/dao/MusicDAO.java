@@ -8,6 +8,7 @@ import first.common.common.CommandMap;
 import first.common.dao.AbstractDAO;
 import first.dto.file.FileDTO;
 import first.dto.music.MusicDTO;
+import first.dto.practice.PracDTO;
 import first.dto.scraps.ScrapDTO;
 
 // 클래스 AbstractDAO를 참조하고 있다. AbstractDAO 에 선언되어 있는 함수 사용 가능. 
@@ -76,6 +77,11 @@ public class MusicDAO extends AbstractDAO{
 
 	public void deleteFile(Map<String, Object> map) throws Exception{
 		update("music.deleteFile", map);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<PracDTO> selectPrac(Map<String, Object> map) throws Exception{
+		return (List<PracDTO>)selectList("music.selectPrac", map);
 	}
 
 }

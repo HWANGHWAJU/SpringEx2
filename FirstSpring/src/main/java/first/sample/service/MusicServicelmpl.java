@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import first.common.common.CommandMap;
 import first.dto.file.FileDTO;
 import first.dto.music.MusicDTO;
+import first.dto.practice.PracDTO;
 import first.dto.scraps.ScrapDTO;
 import first.sample.dao.MusicDAO;
 import first.common.util.FileUtils;
@@ -79,5 +80,10 @@ public class MusicServicelmpl implements MusicService{
 		musicDAO.deleteArticle(map);
 		musicDAO.deleteContent(map);
 		musicDAO.deleteFile(map);
+	}
+	
+	public List<PracDTO> selectPracMap(Map<String, Object> map) throws Exception{
+		List<PracDTO> listP = musicDAO.selectPrac(map);
+		return listP;
 	}
 }

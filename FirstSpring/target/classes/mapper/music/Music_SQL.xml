@@ -204,4 +204,18 @@
        	]]>
      </update>
       	
+      <select id="music.selectPrac" parameterType="hashmap" resultType="first.dto.practice.PracDTO">
+     <!-- <include refid="common.pagingPre"/> -->
+      		<![CDATA[
+      			SELECT 
+      				num,
+      				name,
+      				master,
+      				phone_call,
+      				addr
+      			FROM 
+      				practiceroom
+      		]]>
+      	<!-- <include refid="common.pagingPost"/> -->
+      </select>
 </mapper>

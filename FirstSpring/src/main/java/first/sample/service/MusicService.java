@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import first.common.common.CommandMap;
 import first.dto.file.FileDTO;
 import first.dto.music.MusicDTO;
+import first.dto.practice.PracDTO;
 import first.dto.scraps.ScrapDTO;
 
 //인터페이스 - 공동 작업을 할 경우, 규약만 정해두면 큰 틀을 맞추어 사용할 수 있다
@@ -29,5 +30,7 @@ public interface MusicService {
 	 
 	 //삭제
 	 void deleteArticle(Map<String, Object> map) throws Exception;
+	 
+	 List<PracDTO> selectPracMap(Map<String, Object> map) throws Exception;
 }
  

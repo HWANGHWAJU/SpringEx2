@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import first.common.common.CommandMap;
 import first.dto.music.MusicDTO;
+import first.dto.practice.PracDTO;
 import first.dto.scraps.ScrapDTO;
 import first.login.model.User;
 import first.sample.service.MusicService;
@@ -183,9 +184,13 @@ public class Myguitarcontroller {
     	return mv;
     }
     /*********************	 9. 지도 화면 불러오기 **********************************/
-    @RequestMapping(value="/sample/openSearchPrac.do")
-    public ModelAndView openSearchPrac(CommandMap map) throws Exception{
+    @RequestMapping(value="/sample/openSearchMap.do")
+    public ModelAndView openSearchMap(CommandMap map) throws Exception{
     	ModelAndView mv = new ModelAndView("/sample/Search_prac");
+    	List<PracDTO> list = musicService.selectPracMap(map.getMap());
+    	mv.addObject("list", list);
     	return mv;
     }
+    
+    
 }

@@ -85,11 +85,11 @@ table td{
 				
 				<div class="space"></div>
 				<div style="text-align: center">
-							<a href="javascript:imgShow('img');">Show me your file ; )</a>
+							<a href="#this" name="img">Show me your file ; )</a>
 				</div>
 			
 				<div class="container text-center" id="img" style="display:none; overflow: scroll;">
-					
+					쨘
 				</div>
 				</div> <!-- table div -->
 		
@@ -133,6 +133,10 @@ $(document).ready(function(){
 		e.preventDefault();
 		fn_deleteMusic($(this));
 	});
+	$("a[name='img']").on("click", function(e){
+		e.preventDefault();
+		imgShow($(this));
+	});
 });
 
 function fn_goList(){
@@ -146,6 +150,15 @@ function fn_deleteMusic(obj){
 	comSubmit.addParam("board",board);
 	comSubmit.addParam("MNUM",mnum);
 	comSubmit.submit();
+}
+function imgShow(obj){
+	var img = document.getElementById('img');
+	alert('d');
+	if(img.style.display=='none'){
+		img.style.display='block';
+	}else if(img.style.display=='block'){
+		img.style.display='none';
+	}
 }
 </script>
 </body>
