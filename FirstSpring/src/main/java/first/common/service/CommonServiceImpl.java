@@ -22,4 +22,9 @@ public class CommonServiceImpl implements CommonService{
 	public Map<String, Object> selectFileInfo(Map<String, Object> map) throws Exception{
 		return commonDAO.selectFileInfo(map);
 	}
+	
+	public Map<String, Object> selectOneFile(String fileName) throws Exception{
+		return commonDAO.selectOneFile(fileName);
+	}
+	
 }

@@ -97,14 +97,16 @@
  				music_uploader,
  				music_readcnt,
  				header,
- 				date
+ 				date,
+ 				del
  			) VALUES(
  				#{IDX},
  				#{Musictitle},
  				#{writer},
  				0,
  				#{header},
- 				now() 
+ 				now(),
+ 				'N' 
  			)
  		]]>
  	</insert>
@@ -113,10 +115,12 @@
  			INSERT INTO music_content
  			(
  				music_num,
- 				content
+ 				content,
+ 				del
  			) VALUES (
  				#{IDX},
- 				#{Musictext}
+ 				#{Musictext},
+ 				'N'
  			)
  		]]>
  	</insert>

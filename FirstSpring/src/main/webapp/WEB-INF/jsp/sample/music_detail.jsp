@@ -87,9 +87,20 @@ table td{
 				<div style="text-align: center">
 							<a href="#this" name="img">Show me your file ; )</a>
 				</div>
-			
-				<div class="container text-center" id="img" style="display:none; overflow: scroll;">
-					쨘
+				<div class="space"></div>
+				<div class="container text-center" id="img" style="display:none; overflow: scroll; height: 500px;">
+						<c:choose>
+							<c:when test="${fn:length(files)>0 }">
+								<c:forEach var="files" items="${files }">
+									<img src="${pageContext.request.contextPath }/common/${files.stored_file_name }.do?board=music">
+									<br>
+								</c:forEach>
+							</c:when>
+							<c:otherwise>
+									첨부된 파일이 없습니다.
+							</c:otherwise>
+						</c:choose>
+				
 				</div>
 				</div> <!-- table div -->
 		
@@ -153,7 +164,6 @@ function fn_deleteMusic(obj){
 }
 function imgShow(obj){
 	var img = document.getElementById('img');
-	alert('d');
 	if(img.style.display=='none'){
 		img.style.display='block';
 	}else if(img.style.display=='block'){

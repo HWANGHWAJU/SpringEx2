@@ -280,8 +280,7 @@
 			<div class="space"></div>
 			
 			<div class="include">
-			
-			<jsp:include page="/video/openVideoBoardList.do"/> 
+				<jsp:include page="/video/openVideoBoardList.do"/> 
 			</div>
 			
 			<br>

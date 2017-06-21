@@ -101,6 +101,7 @@ function gfn_renderPaging(params){
     gfv_pageIndex = params.pageIndex; //현재 위치가 저장될 input 태그
     var totalCount = params.totalCount; //전체 조회 건수 37
     var currentIndex = $("#"+params.pageIndex).val(); //현재 위치 1
+    
    
     if($("#"+params.pageIndex).length == 0 || gfn_isNull(currentIndex) == true){
         currentIndex = 1;
@@ -152,7 +153,8 @@ function gfn_renderPaging(params){
             str += "<b><a href='#this' class='pad_5' onclick='_movePage("+i+")'>"+i+"</a></b>";
         }
     }
-    $("#"+divId).append(preStr + str + postStr);
+    $("#"+divId).append(preStr+"&nbsp;" + str+"&nbsp;" + postStr);
+
 }
  
 function _movePage(value){
@@ -165,5 +167,11 @@ function _movePage(value){
     }
 }
 
+
+
+
+
+
+ 
 
 

@@ -74,7 +74,7 @@ public class Myguitarcontroller {
     	
     	List<Map<String, Object>> list = musicService.selectMusicBoardList(map.getMap());
     	mv.addObject("list", list);
-    	
+    	System.out.println("list.get(0) :"+list.get(0));
     	if(list.size() > 0 ){
     		mv.addObject("TOTAL", list.get(0).get("TOTAL_COUNT"));
     	}else{

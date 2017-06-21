@@ -11,5 +11,8 @@ public class CommonDAO extends AbstractDAO{
 	public Map<String, Object> selectFileInfo(Map<String, Object> map) throws Exception{
 		return (Map<String, Object>) selectOne("common.selectFileInfo", map);
 	}
-	
+	@SuppressWarnings("unchecked")
+	public Map<String,Object> selectOneFile(String fileName) throws Exception{
+		return (Map<String, Object>) selectOne("common.selectOneFile", fileName);
+	}
 }

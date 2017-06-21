@@ -14,6 +14,25 @@
  				num = #{IDX}
  		]]>
  	</select>
+ 	
+ 	 	<select id="selectOneFile" parameterType="String" resultType="hashmap">
+ 		<![CDATA[
+  			SELECT 
+ 				file_num,
+ 				article_num,
+ 				original__file_name,
+ 				stored_file_name,
+ 				file_size,
+ 				upload_date,
+ 				uploader,
+ 				del
+ 			FROM
+ 				music_file
+ 			WHERE
+ 				stored_file_name = #{fileName} and
+ 				del='N'
+ 		]]>
+ 	</select>
  <!-- 페이징 처리를 위한 -->
  	<sql id="pagingPre">
  		<![CDATA[
