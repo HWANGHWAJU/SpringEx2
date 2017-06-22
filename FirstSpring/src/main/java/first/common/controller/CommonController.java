@@ -6,6 +6,7 @@ import java.net.URLEncoder;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.FileUtils;
@@ -54,25 +55,20 @@ public class CommonController {
 	}
 	
 	@RequestMapping(value="/common/{fileName}.do")
-	public void getFile(@PathVariable String fileName, @RequestParam String board, CommandMap map, HttpServletResponse response) throws Exception{
+	public void getFile(@PathVariable String fileName, @RequestParam String board, CommandMap map, HttpServletResponse response, HttpServletRequest request) throws Exception{
 		System.out.println("들오오긴 햇니");
 		System.out.println(board);
 //		Map<String, Object> filemap = commonService.selectFileInfo(map.getMap());
 		
 		Map<String, Object> afile=null;
 		if(board.equals("music")){
-			afile = commonService.selectOneFile(fileName);
+			commonService.selectMOneFile(fileName,response);
 		}else if(board.equals("video")){
-			
+		commonService.selectVOneFile(fileName, response, request);
 		}
 		
 		System.out.println("PathVariable :"+fileName);
 
-	    byte[] fileByte = FileUtils.readFileToByteArray(new File("C:\\dev\\file\\"+fileName));
-		
-	    OutputStream output = response.getOutputStream();
-	    output.write(fileByte);
-	    output.flush();
-		
+
 	}
 }

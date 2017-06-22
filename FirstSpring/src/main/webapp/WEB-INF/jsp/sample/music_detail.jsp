@@ -170,6 +170,39 @@ function imgShow(obj){
 		img.style.display='none';
 	}
 }
+
+function scrap(obj){
+	var msg = null;
+	var board="music";
+	var mnum = "${music.music_num}";
+	var userId = "${loginUser.id}";
+	if(obj.checked == true){
+		msg=confirm("스크랩 할랭?");
+			if(msg == true) {
+				alert("board:"+board+"mnum:"+mnum+"userId:"+userId);
+				var comSubmit = new ComSubmit();
+				comSubmit.setUrl("<c:url value='/scrap/insertScrap.do'/>");
+				comSubmit.addParam("board", board);
+				comSubmit.addParam("mnum", mnum);
+				comSubmit.addParam("userId", userId);
+				comSubmit.submit();
+			}else if(msg == false){
+				obj.checked = false;
+			}
+		
+	} else {
+		
+		var mg = confirm("스크랩 해제?");
+		
+		if(mg == true){
+			alert("구래! 취소!");
+		}	else if( mg == false){
+			obj.checked = true;
+		}
+	}
+	
+	
+}
 </script>
 </body>
 
