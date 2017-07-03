@@ -55,8 +55,12 @@ table td{
 				<tr>
 						<!-- 내용 -->
 						<th>Content</th>
+						<c:choose>
+							<c:when test="${not empty seesionScope.loginUser }">
 						<td align="right"colspan="2"><input type="checkbox" id="scrapboard" name="scrapboard" onclick="scrap(this);">
 						스크랩</td>
+							</c:when>	
+						</c:choose>
 						</tr>
 					<tr>
 						<td colspan="3" width="100%" height="300"id="content" style="border:1px solid #c59a6d;">
@@ -74,7 +78,7 @@ table td{
 											<a href="#this" id="file">${files.original__file_name}(${files.file_size }kb)</a><br>
 										</c:forEach>
 								</c:when>
-								<c:otherwise>
+								<c:otherwise>	
 									첨부된 파일이 없습니다.
 								</c:otherwise>
 								</c:choose>

@@ -1,16 +1,17 @@
 package first.sample.controller;
 
 import java.util.Iterator;
+
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
+import java.text.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -21,7 +22,7 @@ import first.dto.practice.PracDTO;
 import first.dto.scraps.ScrapDTO;
 import first.login.model.User;
 import first.sample.service.MusicService;
-import first.sample.service.SampleService;
+
 
 //어노테이션 존나 중요
 @Controller
@@ -39,6 +40,7 @@ public class Myguitarcontroller {
 	
     @RequestMapping(value="/sample/openMainIndex.do")
     public ModelAndView openMainIndex(Map<String, Object> commandMap) throws Exception{
+    	System.out.println("뭐람");
     	ModelAndView mv = new ModelAndView("/sample/mainIndex");  	
     	return mv;
     }
@@ -90,6 +92,7 @@ public class Myguitarcontroller {
     public ModelAndView openMusicDetail(CommandMap commandMap) throws Exception{
     	ModelAndView mv = new ModelAndView("/sample/music_detail");
     	//여기서 두 개의 dao를 통해 받아온 결과값들을 받아서 mv 에 추가 해줘야해 
+    	musicService.updateHitCnt(commandMap.getMap());
     	Map<String, Object> music = musicService.selectMusicBoardDetail(commandMap.getMap());
     	
     	mv.addObject("music", music.get("music"));
@@ -192,5 +195,5 @@ public class Myguitarcontroller {
     	return mv;
     }
     
-    
+
 }

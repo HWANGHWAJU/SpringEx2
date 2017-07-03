@@ -32,5 +32,7 @@ public interface MusicService {
 	 void deleteArticle(Map<String, Object> map) throws Exception;
 	 
 	 List<PracDTO> selectPracMap(Map<String, Object> map) throws Exception;
+	 
+	 void updateHitCnt(Map<String, Object> map) throws Exception;
 }
  

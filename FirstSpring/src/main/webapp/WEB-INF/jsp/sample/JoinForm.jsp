@@ -5,7 +5,9 @@
 <head>
 <%@ include file="/WEB-INF/include/include-header.jsp" %>
 <%@ include file="/WEB-INF/include/include-floatmenu.jsp" %>
- 
+ <style>
+ .tab tr td{height: 30px;}
+ </style>
 </head>
 <body>
 <jsp:include page="/WEB-INF/include/floatmenu.jsp"/>
@@ -21,57 +23,58 @@
 		<div class="container text-center">
 				<div class="tbl">
 											<form method="post" name="joinform" id="joinform">
-												<table class="tab"align="center" >
+											<center>
+												<table class="tab">
 													<tr>
-														<td colspan="2" >*ID </td>
-														<td><input type="text" id="inputid" name="inputid"></td>
-														<td align="left"><input type="button"  class="check" value="중복 확인" onclick="CheckID();"></td>
+														<td  >*ID </td>
+														<td><input type="text" id="inputid" name="inputid">
+														<input type="button"  class="check" value="중복 확인" onclick="CheckID();"></td>
 													</tr>
 													
 													<tr>
-														<td colspan="2" >* Password </td>
+														<td>* Password </td>
 														<td><input type="password" id="inputpw" name="inputpw" ></td>
-														<td></td>
+														
 													</tr>
 													<tr>
-														<td colspan="2" >* Password confirm	</td>
+														<td >* Password confirm	</td>
 														<td><input type="password" id="pwcon" name="pwcon"></td>
-														<td></td>
+														
 													</tr>
 													<tr>
-														<td colspan="2" >* Name </td>
+														<td>* Name </td>
 														<td><input type="text" id="inputname" name="inputname">
 														</td>
 													</tr>
 													<tr>
-														<td colspan="2" >* Age </td>
+														<td >* Age </td>
 														<td><input type="number" id="inputage" name="inputage">
 														</td>
-														<td></td>
+													
 													</tr>
 												
 													<tr>
-														<td colspan="2" >* E-Mail </td>
+														<td>* E-Mail </td>
 														<td><input type="email" id="inputemail" name="inputemail">
 														</td> 
-														<td></td>
+														
 													</tr>
 													
 												<tr><td height="14" colspan="3"></td>
 												</tr>
 												
-													<tr  >
-													<td align="center"  colspan="4" >
+													<tr >
+													<td align="center" colspan="2">
 													<input type="button"  id="join"value="회원 가입" class="btn">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 													<input type="reset"  id="re" value="다시 쓰기"  class="btn">
 													</td>
 													</tr>
-													<tr><td></td></tr>	
+													<tr><td height="30px"></td></tr>	
 													<tr>
-													<td colspan="4"><a href="openMainIndex.do">HOME</a></td>
+													<td colspan="3" style="text-align: center;"><a href="openMainIndex.do">HOME</a></td>
 													</tr>
 												</table>
-												
+												</center>
 											</form>
 
 	</div>

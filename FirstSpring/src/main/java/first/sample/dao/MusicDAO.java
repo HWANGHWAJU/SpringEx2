@@ -84,5 +84,8 @@ public class MusicDAO extends AbstractDAO{
 		return (List<PracDTO>)selectList("music.selectPrac", map);
 	}
 
+	public void updateHitCnt(Map<String, Object> map) throws Exception{
+		update("music.updateHitCnt", map);
+	}
 }
 

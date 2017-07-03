@@ -86,4 +86,11 @@ public class MusicServicelmpl implements MusicService{
 		List<PracDTO> listP = musicDAO.selectPrac(map);
 		return listP;
 	}
+	
+
+	@Override
+	public void updateHitCnt(Map<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		musicDAO.updateHitCnt(map);
+	}
 }

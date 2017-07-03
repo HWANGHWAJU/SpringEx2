@@ -168,13 +168,13 @@
  		]]>
  	</select>
  	
- 	     <update id="updateHitCnt" parameterType="hashmap">
+ 	     <update id="music.updateHitCnt" parameterType="hashmap">
 	        <![CDATA[
-		        UPDATE board
+		        UPDATE music
 		        SET
-		            hit_count = hit_count + 1
+		            music_readcnt = music_readcnt + 1
 		        WHERE
-		            num = #{IDX}   
+		            music_num = #{MNUM}   
     ]]>
     </update>
     

@@ -48,7 +48,7 @@
                 	</c:when>
                 	<c:otherwise>
                 	    <a href="#this" name="login" style="border-bottom: 1px solid; color: white;">LOGIN</a>&nbsp;&nbsp;
-		                <a href="#this" name="join" style="border-bottom: 1px solid; color: white;">SIGN IN</a>
+		                <a href="#this" name="join" style="border-bottom: 1px solid; color: white;">SIGN UP</a>
                 	</c:otherwise>
                 </c:choose>
                 </div>
@@ -125,7 +125,7 @@
                     </div></a>
                 </div>
 
-                <div class="col-md-4 col-sm-4"><a href="#">
+                <div class="col-md-4 col-sm-4"><a href="<c:url value='/qanda/openQandA.do'/>">
                     <div class="service">
                         <span class="fa fa-plug fa-3x"></span>
                         <h4>Q & A </h4>
@@ -442,7 +442,7 @@
                         </div>
                         <textarea class="form-control" rows="4" placeholder="Message" id="text" name="text"></textarea>
                         <div class="text-right">
-                            <a href="QandAList.jsp" class="btn send-btn">List</a>
+                            <a href="#this" name="qlist" class="btn send-btn">List</a>
                             <a href="#" class="btn send-btn" onclick="submit();">Send</a>
                       
                         </div>
@@ -503,8 +503,17 @@ $(document).ready(function(){
 		fn_openMyPage($(this));
 	});
 	
+	$("a[name='qlist']").on("click", function(e){
+		e.preventDefault();
+		fn_openQandA($(this));
+	});
+	
 });
-
+function fn_openQandA(obj){
+	var comSubmit = new ComSubmit();
+	comSubmit.setUrl("<c:url value='/qanda/openQandA.do'/>");
+	comSubmit.submit();
+}
 function fn_openLoginForm(obj){
 	var comSubmit = new ComSubmit();
 	comSubmit.setUrl("<c:url value='/sample/openLoginForm.do'/>");
